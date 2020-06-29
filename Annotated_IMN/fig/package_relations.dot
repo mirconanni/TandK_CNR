@@ -1,0 +1,26 @@
+digraph {
+        // rankdir="LR";
+
+        trajectories [shape=box,style=filled,color=".7 .3 1.0"]
+        locations [shape=box,style=filled,color=".7 .3 1.0"]
+        movements [shape=box,style=filled,color=".7 .3 1.0"]
+        imns [shape=box,style=filled,color=".7 .3 1.0"]
+        poi_source [shape=box,style=filled,color=".7 .3 1.0"]
+        loc_features [shape=box,style=filled,color=".7 .3 1.0"]
+        cleaned_POIs [shape=box,style=filled,color=".7 .3 1.0"]
+
+        trajectories -> "build_imn.py";
+        locations -> "build_imn.py";
+        movements -> "build_imn.py";
+        imns -> "build_loc_feat.py";
+        poi_source -> "clean_POI.py";
+        trajectories -> "detect_locations.py";
+        trajectories -> "detect_movements.py";
+        locations -> "detect_movements.py";
+        
+        "build_imn.py" -> imns;
+        "build_loc_feat.py" -> loc_features;
+        "clean_POI.py" -> cleaned_POIs;
+        "detect_locations.py" -> locations;
+        "detect_movements.py" -> movements      
+}
