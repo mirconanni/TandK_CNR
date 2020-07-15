@@ -1,0 +1,14 @@
+digraph {
+        // rankdir="LR";
+        mapComplete [shape=box,style=filled,color=".7 .3 1.0"];
+        inputIMNs [shape=box,style=filled,color=".7 .3 1.0"];
+        simulationTrace [shape=box,style=filled,color=".7 .3 1.0"];
+        
+        mapComplete -> "Lib_shortest_path_for_EV";
+        inputIMNs -> "Lib_full_vs_partial_charge";
+        inputIMNs -> "Main_Simulation_of_recharge_scenarios";
+
+        "Lib_shortest_path_for_EV" -> "Lib_full_vs_partial_charge";
+        "Lib_full_vs_partial_charge" -> "Main_Simulation_of_recharge_scenarios";
+        "Main_Simulation_of_recharge_scenarios" -> simulationTrace;
+}

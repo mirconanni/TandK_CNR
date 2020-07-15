@@ -1,0 +1,25 @@
+digraph {
+        // rankdir="LR";
+
+        map [shape=box,style=filled,color=".7 .3 1.0"]
+        mapMaxSpeed [shape=box,style=filled,color=".7 .3 1.0"]
+        mapMaxSpeedEV [shape=box,style=filled,color=".7 .3 1.0"]
+        mapComplete [shape=box,style=filled,color=".7 .3 1.0"]
+        "OSM (web)" [shape=box,style=dashed,color=".9 .5 1.0"]
+        "SRTM (web)" [shape=box,style=dashed,color=".9 .5 1.0"]
+
+        "OSM (web)" -> "Preprocessing 01";
+        "OSM (web)" -> "Preprocessing 02";
+        "OSM (web)" -> "Preprocessing 03";
+        "SRTM (web)" -> "Preprocessing 03";
+        map -> "Preprocessing 02";
+        mapMaxSpeed -> "Preprocessing 02";
+        mapMaxSpeedEV -> "Preprocessing 03";
+        
+        
+        "Preprocessing 01" -> map;
+        "Preprocessing 02" -> mapMaxSpeed;
+        "Preprocessing 02" -> mapMaxSpeedEV;
+        "Preprocessing 03" -> mapComplete;
+
+}
