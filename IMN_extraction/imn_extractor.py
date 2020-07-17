@@ -1,5 +1,5 @@
-import os
 import sys
+#sys.path.append('/Users/omid/IdeaProjects/TandK_CNR/')
 sys.path.append("..")
 
 import json
@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 from networkx.readwrite import json_graph
-from Helpers.TaK_Mongo_Connector import TaK_Mongo_Connector
+from IMN_extraction.Helpers.TaK_Mongo_Connector import TaK_Mongo_Connector
 from IMN_extraction.individual_mobility_network import build_imn
-from Helpers.trajectory import Trajectory
+from IMN_extraction.Helpers.trajectory import Trajectory
 import time
 
 __author__ = 'Omid Isfahani Alamdari'
