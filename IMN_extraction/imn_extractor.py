@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append('/Users/omid/IdeaProjects/TandK_CNR/')
+sys.path.append("..")
 
 import json
 import datetime
