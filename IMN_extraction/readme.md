@@ -1,4 +1,4 @@
-![Track and Know project](./fig/tak.jpg "Track and Know project")
+![Track and Know project](../EV_simulation/fig/tak.jpg "Track and Know project")
 H2020 - Grant Agreement n. 780754
 
 # Individual Mobility Network Extractor
