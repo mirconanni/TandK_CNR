@@ -1,3 +1,6 @@
+![Track and Know project](./fig/tak.jpg "Track and Know project")
+H2020 - Grant Agreement n. 780754
+
 # Individual Mobility Network Extractor
 An open-source implementation of the algorithm for extracting Individual Mobility Network (IMN) based on the mobility history of a user. The mobility history includes poisition information, and optional events and crashes of the user during a specific period of time.
 
