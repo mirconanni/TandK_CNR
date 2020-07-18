@@ -4,15 +4,15 @@ H2020 - Grant Agreement n. 780754
 # Individual Electric Vehicle simulation
 This repository contains the code implementing the EV simulation tool described in Track & Know deliverable D4.2:
 
-_**Deliverabel D4.2 Analytics for individuals’ mobility networks**. https://trackandknowproject.eu/_
+* _**Deliverabel D4.2 Analytics for individuals’ mobility networks**. https://trackandknowproject.eu/_
 
 and in MS thesis works:
 
-_Shadi Shajari. **Simulating individual mobility Network for Electric Vehicles.**
-In Electronic theses and dissertations repository of University of Pisa: https://etd.adm.unipi.it/theses/available/etd-04162020-104021/_
+* _Shadi Shajari. **Simulating individual mobility Network for Electric Vehicles.**
+  In Electronic theses and dissertations repository of University of Pisa: https://etd.adm.unipi.it/theses/available/etd-04162020-104021/_
 
-_Francesco Rallis. **Trip planning methods for electric vehicles (in Italian).**
-In Electronic theses and dissertations repository of University of Pisa: https://etd.adm.unipi.it/theses/available/etd-09152019-025908/_
+* _Francesco Rallis. **Trip planning methods for electric vehicles (in Italian).**
+  In Electronic theses and dissertations repository of University of Pisa: https://etd.adm.unipi.it/theses/available/etd-09152019-025908/_
 
 
 ## Preprocessing 
