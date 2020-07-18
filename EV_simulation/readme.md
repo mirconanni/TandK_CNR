@@ -34,3 +34,6 @@ Their dependencies are shown below:
 
 ![Libraries dependencies](./fig/package_relations_libs.png "Libraries dependencies")
 
+## Acknowledgement
+This work is partially supported by the E.C. H2020 programme under the funding scheme Track & Know, G.A. 780754, [Track&Know](https://trackandknowproject.eu)
+
