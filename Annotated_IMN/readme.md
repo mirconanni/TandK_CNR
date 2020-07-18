@@ -21,4 +21,5 @@ The notebooks provide some additional operations, including:
 - the visualization of annotated IMNs
 - visualization of locations clusters -- both as plots and as maps
 
-
+## Acknowledgement
+This work is partially supported by the E.C. H2020 programme under the funding scheme Track & Know, G.A. 780754, [Track&Know](https://trackandknowproject.eu)
