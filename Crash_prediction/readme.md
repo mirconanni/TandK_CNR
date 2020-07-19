@@ -2,11 +2,14 @@
 H2020 - Grant Agreement n. 780754
 
 # Crash Prediction
-An open-source implementation of the algorithm for crash prediction based on the mobility history of a user. The mobility history includes poisition information, and optional events and crashes of the user during a specific period of time. It includes the code for extracting Individual Mobility Networks (IMNs) and Location Extraction, for ease of use.
+An open-source implementation of the algorithm for crash prediction based on the mobility history of a user. The mobility history includes poisition information, and optional events and crashes of the user during a specific period of time. It includes the code for extracting Individual Mobility Networks (IMNs) and Location Extraction for ease of use.
 
 ## Code Workflow
-The code includes different files with various functionalities as shows in the figure.
-* In the first step, the imn_extractor.py should be run to extract IMNs for a set of users. These IMNs is used for training the crash prediction machine learning models. The script receives three parameters, a name for the area, and a name for the type of the users (among crash, nocrash) mostyly used for organizing the models, and a boolean parameter overwrite to indicate whether the the previously extracted IMNs file should be overwritten.
+The code includes different scripts with various functionalities as shows in the figure.
+
+![Crash Prediction Workflow](./fig/crash_prediction_workflow.png "Crash Prediction Workflow")
+
+* In the first step, the imn_extractor.py should be executed to extract IMNs for a set of users. These IMNs is used for training the crash prediction machine learning models. The script receives three parameters, a name for the area, and a name for the type of the users (among crash, nocrash) mostly used for organizing the models and output files, and a boolean parameter overwrite to indicate whether the previously extracted IMNs file should be overwritten.
 ```bash
 python3 imn_extractor.py area user_type overwrite
 ```
@@ -35,8 +38,6 @@ In the last step, the script crash_predicition_service.py can be used to compute
 ```bash
 python3 crash_predicition_service.py uid area period
 ```
-
-![Crash Prediction Workflow](./fig/crash_prediction_workflow.png "Crash Prediction Workflow")
 
 ## Configuration Parameters
 There are some parameters used for connecting to MongoDB database, the desired period of data, trajectory segmentation, IMN extraction, and the location to store the results which can be modified in the file crash_config.py (the default values are set):
