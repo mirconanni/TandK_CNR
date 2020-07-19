@@ -4,7 +4,7 @@ H2020 - Grant Agreement n. 780754
 # Individual Electric Vehicle simulation
 This repository contains the code implementing the EV simulation tool described in Track & Know deliverable D4.2:
 
-* _**Deliverabel D4.2 Analytics for individuals’ mobility networks**. https://trackandknowproject.eu/_
+* _**Deliverable D4.2 Analytics for individuals’ mobility networks**. https://trackandknowproject.eu/_
 
 and in MS thesis works:
 
