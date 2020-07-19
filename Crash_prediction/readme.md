@@ -36,7 +36,7 @@ In the last step, the script crash_predicition_service.py can be used to compute
 python3 crash_predicition_service.py uid area period
 ```
 
-![Crash Prediction Workflow](./fig/crash_prediction_workflow.png "Crash Prediction Workflow" | width=400)
+![Crash Prediction Workflow](./fig/crash_prediction_workflow.png "Crash Prediction Workflow")
 
 ## Configuration Parameters
 There are some parameters used for connecting to MongoDB database, the desired period of data, trajectory segmentation, IMN extraction, and the location to store the results which can be modified in the file crash_config.py (the default values are set):
