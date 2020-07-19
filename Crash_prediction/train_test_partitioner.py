@@ -31,7 +31,7 @@ class NumpyEncoder(json.JSONEncoder):
 def main():
     area = sys.argv[1]
     type_user = sys.argv[2]  # 'crash' 'nocrash'
-    overwrite = str2bool(sys.argv[4])
+    overwrite = str2bool(sys.argv[3])
 
     window = cfg.crash["window"]
     datetime_from = datetime.datetime.strptime(cfg.imn["from_date"], '%Y-%m-%dT%H:%M:%S.%f')
