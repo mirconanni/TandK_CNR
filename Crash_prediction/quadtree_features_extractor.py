@@ -12,6 +12,8 @@ from Crash_prediction.Helpers.TaK_Mongo_Connector import TaK_Mongo_Connector
 from Crash_prediction.tak_quadtree import lon_lat_to_quadtree_path
 import Crash_prediction.crash_config as cfg
 
+def str2bool(v):
+    return v.lower() in ("yes", "true", "t", "1")
 
 def haversine_np(p1, p2):
     """
@@ -135,7 +137,7 @@ def quadtrees_features_extract(quadtrees_features, quadtree_data, depth):
 
 def main():
     area = sys.argv[1]
-    overwrite = True
+    overwrite = str2bool(sys.argv[2])
     depth = 16
     store_evry = 100
 
