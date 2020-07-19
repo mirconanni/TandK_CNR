@@ -40,7 +40,8 @@ python3 crash_predicition_service.py uid area period
 ```
 
 ## Configuration Parameters
-There are some parameters used for connecting to MongoDB database, the desired period of data, trajectory segmentation, IMN extraction, and the location to store the results which can be modified in the file crash_config.py (the default values are set):
+There are some parameters used for connecting to MongoDB database, the desired period of data, trajectory segmentation, IMN extraction, and the location to store the results which can be modified in the file **crash_config.py** (the default values are set):
+
 For MongoDB:
 * host: The hostname of the MongoDB database
 * port: The port number of the MongoDB database
