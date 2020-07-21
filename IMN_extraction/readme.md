@@ -82,4 +82,4 @@ In EDBT/ICDT Workshop on Big Mobility Data Analytics (BMDA 2020), CEUR, vol 2578
 
 * <div id="2">[2] Riccardo Guidotti and Mirco Nanni. Crash Prediction and Risk Assessment with Individual Mobility Networks. To appear In IEEE MDM Conference 2020</div>
 
-* <div id="3">[Geolife Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=52367)
+* <div id="3">[3] Geolife Trajectory Dataset (https://www.microsoft.com/en-us/download/details.aspx?id=52367)
