@@ -41,6 +41,35 @@ It should be highlighted that the IMN extractor can produce IMNs without the eve
 python3 imn_extractor.py localhost 27017 testdb dataset4 user_imns users.txt False 0.07 0.05 1200 2017-04-01T00:00:00.000 2017-06-01T00:00:00.000 100 1.0 60
 ```
 
+## Example on Geolife Dataset
+In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[3]](#3) is inserted into a collection "geolife_data" on MongoDB and then the IMN is created for that user. Please notice that, the id of the user is inserted into a file geolife_users.txt. Based on the above descriptions, this file contains the id of the users for which the IMNs will be generated. The result is stored in a collection "geolife_imns".
+
+```python
+import glob
+import pandas as pd
+
+from IMN_extraction.Helpers.TaK_Mongo_Connector import TaK_Mongo_Connector
+from IMN_extraction.imn_extractor import imn_extract
+
+mypath = "Geolife Trajectories 1.3/Data/064/Trajectory/"
+uid = 64
+all_points = []
+for f in sorted(glob.glob(mypath + "*.plt")):
+    points = pd.read_csv(f, skiprows=6, header=None, parse_dates=[[5, 6]])
+    for i,p in points.iterrows():
+        all_points.append({"RECORD_TYPE": 'P',
+                           "VEHICLE_ID": uid,
+                           "TIMESTAMP": p['5_6'],
+                           "location": {"lat": p[0], "lon": p[1]}
+                           })
+
+mongo_connector = TaK_Mongo_Connector('localhost', '27017', 'test')
+mongo_connector.insert_many('geolife_data', all_points)
+mongo_connector.create_index('geolife_data', 'TIMESTAMP', True)
+
+imn_extract('localhost', '27017', 'test', 'geolife_data', 'geolife_imns', 'geolife_users.txt', True, 0.07, 0.05, 1200, '2008-08-15T00:00:00.000', '2008-08-31T00:00:00.000', 5, 1.0, 60)
+```
+
 ## Acknowledgement
 This work is partially supported by the E.C. H2020 programme under the funding scheme Track & Know, G.A. 780754, [Track&Know](https://trackandknowproject.eu)
 
@@ -52,3 +81,5 @@ Self-Adapting Trajectory Segmentation.
 In EDBT/ICDT Workshop on Big Mobility Data Analytics (BMDA 2020), CEUR, vol 2578, 2020.</div>](http://ceur-ws.org/Vol-2578/BMDA3.pdf)
 
 * <div id="2">[2] Riccardo Guidotti and Mirco Nanni. Crash Prediction and Risk Assessment with Individual Mobility Networks. To appear In IEEE MDM Conference 2020</div>
+
+* <div id="3">[3] Geolife Trajectory Dataset (https://www.microsoft.com/en-us/download/details.aspx?id=52367)
