@@ -42,7 +42,7 @@ python3 imn_extractor.py localhost 27017 testdb dataset4 user_imns users.txt Fal
 ```
 
 ## Example on Geolife Dataset
-In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[3]](#3) is inserted into a collection "geolife_data" on MongoDB and then the IMN is created for that user.
+In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[3]](#3) is inserted into a collection "geolife_data" on MongoDB and then the IMN is created for that user. Creating an index for large volumes of data is highly recommended.
 
 ```python
 import glob
