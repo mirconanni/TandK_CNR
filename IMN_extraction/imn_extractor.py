@@ -70,8 +70,8 @@ def build_imn_proc(values):
     return json_str  #imn
 
 
-def imn_extract(filename, database, mongo_host, mongo_port, input_collection, output_collection, adaptive,
-                from_date, to_date, max_speed, space_treshold, time_treshold, min_traj_nbr, min_length, min_duration):
+def imn_extract(mongo_host, mongo_port, database, input_collection, output_collection, filename, adaptive,
+                max_speed, space_treshold, time_treshold, from_date, to_date, min_traj_nbr, min_length, min_duration):
 
     # Making connection to the MongoDB database (host, port, database name)
     mongo_connector = TaK_Mongo_Connector(mongo_host, mongo_port, database)
@@ -188,8 +188,8 @@ def main():
     min_length = float(sys.argv[14])  # minimum spatial length of an extracted trajectory
     min_duration = int(sys.argv[15])
 
-    imn_extract(users_filename, database, mongo_host, mongo_port, input_collection, output_collection, adaptive,
-                from_date, to_date, max_speed, space_treshold, time_treshold, min_traj_nbr, min_length, min_duration)
+    imn_extract(mongo_host, mongo_port, database, input_collection, output_collection, users_filename, adaptive,
+                max_speed, space_treshold, time_treshold, from_date, to_date, min_traj_nbr, min_length, min_duration)
 
 
 if __name__ == "__main__":

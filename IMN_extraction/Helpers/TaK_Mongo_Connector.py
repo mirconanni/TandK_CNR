@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING, DESCENDING
 import json
 import IMN_extraction.Helpers.trajectory_segmenter as trajectory_segmenter
 from IMN_extraction.Helpers.trajectory import Trajectory
@@ -14,7 +14,6 @@ class TaK_Mongo_Connector:
     This class provides methods to communicate with the MongoDB database of WP3.
 
     """
-
     def __init__(self, host='localhost', port='27017', db='trackAndKnow'):
         """
         The constructor for TaK_Mongo_Connector class.
@@ -26,6 +25,7 @@ class TaK_Mongo_Connector:
 
         #uri = "mongodb://%s:%s@%s" % (config.get('MONGO_HOST'), config.get('MONGO_PORT'))
         uri = "mongodb://%s:%s" % (host, port)
+        print(uri)
         #uri = "mongodb://%s:%s@%s:%s" % ("user_name", "password", host, port)
 
         self._conn = MongoClient(uri)
@@ -252,6 +252,15 @@ class TaK_Mongo_Connector:
 
     def insert_one(self, collection, doc_object):
         self.db[collection].insert_one(doc_object)
+
+    def insert_many(self, collection, doc_list):
+        self.db[collection].insert_many(doc_list)
+
+    def create_index(self, collection, field, asc):
+        if asc == True:
+            self.db[collection].create_index([(field, ASCENDING)])
+        else:
+            self.db[collection].create_index([(field, DESCENDING)])
 
     def import_csv(self, filename, collection):
         """
