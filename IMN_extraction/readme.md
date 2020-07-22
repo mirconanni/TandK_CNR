@@ -80,7 +80,7 @@ or the whole mobility history of a user can be retrieved from the database, and 
 
 ```python
 input_query = {"user_id": 64,"adaptive": True, "temporal_thr": 1200, "spatial_thr": 0.05,
-                   "max_speed": 0.07, "min_length": 1.0, "min_duration": 60, "events_crashes": False,
+                   "max_speed": 0.07, "min_length": 1.0, "min_duration": 60, "events_crashes": True,
                    "from_date": '2008-08-15T00:00:00.000', "to_date": '2008-08-31T00:00:00.000'}
 
 imh, events, crashes = mongo_connector.load_imh('geolife_data', **input_query)
