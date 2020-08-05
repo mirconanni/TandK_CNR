@@ -47,7 +47,7 @@ Adaptive trajectory segmenter recieves the whole position history of the user as
 # Adaptive segmentation of trajectories
 traj_list = trajectory_segmenter.segment_trajectories_user_adaptive(all_points, int(uid), temporal_thr=1200, spatial_thr=50, max_speed=0.07)
 
-# Removing extremely small trajectories
+# Removing extremely short trajectories
 traj_list = {k: tr for k, tr in traj_list.items() if tr.duration() > 60 or tr.length() > 1.0}
 ```
 
