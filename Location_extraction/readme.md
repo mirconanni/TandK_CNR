@@ -4,6 +4,24 @@ H2020 - Grant Agreement n. 780754
 # Location Extractor
 An open-source implementation of the algorithm for adaptive trajectory segmentation and extracting the locations based on the mobility history of a user. The mobility history includes poisition information of the user during a specific period of time.
 
+## Input Parameters
+Adaptive trajectory segmentation receives the following required parameters:
+* points: list of points, each point as a list of longitude, latitude and unix timestamp.
+* uid: the id of the user, to be added to the resulting trajectory objects.
+
+and some optional parameters, among which the important ones are:
+* max_speed: Used for trajectory segmentation
+* space_treshold: If the spatial distance between two consecutive points **A** and **B** in user's positions sequence is higher than this threshold, the point A is considered as the last point of the previous trajectory and point B is considered as the starting point of the new trajectory.
+* time_treshold: If the temporal difference between two consecutive points **A** and **B** in user's positions sequence is higher than this threshold, the point A is considered as the last point of the previous trajectory and point B is considered as the starting point of the new trajectory.
+
+The location extractor receives the following input parameters:
+* kmin: minimum *k* for XMeans clustering
+* kmax: maximum *k* for XMeans clustering
+* xmeans_df: distance function for XMeans clustering
+* singlelinkage_df: distance function for computing pairwise distances between cluster centers returned by XMeans 
+* is_outlier: a statistical test function for identifying outliers
+* min_dist: used for getting the cut distances
+
 ## Example Usage on Geolife Dataset
 In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[2]](#2) is used to perform adaptive trajectory segmentation and identify locations. The code below is presented in script *geolife_example.py*.
 
@@ -88,43 +106,6 @@ print(location_points)  # Contains the mapping from locations to points
 print(location_prototype)  # Contains the latitude and longitude of the location centroids
 ```
 
-## Input Parameters
-The main application can be executed using the following command:
-```bash
-python3 imn_extractor.py host port db input_col output_col users_filename adaptive max_speed space_treshold time_treshold from_date to_date min_traj_nbr min_length min_duration
-```
-The input parameters are:
-* host: The hostname of the MongoDB database
-* port: The port number of the MongoDB database
-* db: The name of the MongoDB database to read input data
-* input_col: The collection in the MongoDB database that contains the input data (positions, events and crashes)
-* output_col: The name of the collection to store the IMN
-* users_filename: The filename that contains the id of the users for which IMN should be extracted
-* adaptive: If True, the adpative approach introduced in [[1]](#1) will be used for trajectory segmentation. Otherwise, the normal trajectory segmentation based on max_speed, space_treshold, and time_treshold will be used.
-* max_speed: Used for trajectory segmentation
-* space_treshold: If the spatial distance between two consecutive points **A** and **B** in user's positions sequence is higher than this threshold, the point A is considered as the last point of the previous trajectory and point B is considered as the starting point of the new trajectory.
-* time_treshold: If the temporal difference between two consecutive points **A** and **B** in user's positions sequence is higher than this threshold, the point A is considered as the last point of the previous trajectory and point B is considered as the starting point of the new trajectory.
-* from_date: Start date and time of the period for which the IMN is going to be extracted
-* to_date: End date and time of the period for which the IMN is going to be extracted
-* min_traj_nbr: minimum number of trajectories in the period to start building IMNs
-* min_length: minimum spatial length of an extracted trajectory to be considered in the IMN extraction process
-* min_duration: minimum temporal duration of an extracted trajectory to be considered in the IMN extraction process
-
-## Input Data
-Each record in the input mobility history collection should contain at least these fields:
-* VEHICLE_ID: that is the identifier of the user
-* RECORD_TYPE: that identifies the type of the record: 'P' for position fix, 'X' for crash and harsh event types: 'A' = acceler, 'B' = braking, 'C' = cornering, 'Q' = quick lateral movement
-* location: object which contains two double fileds of lat and lon.
-* TIMESTAMP: The date/time of the record
-
-It should be highlighted that the IMN extractor can produce IMNs without the event and crash information. If the events information are available, the event and crash records, in adition to the above mandatory fields, can also contain:
-{SPEED, MAX_ACCELERATION, AVG_ACCELERATION, EVENT_ANGLE, LOCATION_TYPE, DURATION, HEADING}
-
-## Example Usage
-```bash
-python3 imn_extractor.py localhost 27017 testdb dataset4 user_imns users.txt False 0.07 0.05 1200 2017-04-01T00:00:00.000 2017-06-01T00:00:00.000 100 1.0 60
-```
-
 ## Acknowledgement
 This work is partially supported by the E.C. H2020 programme under the funding scheme Track & Know, G.A. 780754, [Track&Know](https://trackandknowproject.eu)
 
@@ -136,4 +117,3 @@ Self-Adapting Trajectory Segmentation.
 In EDBT/ICDT Workshop on Big Mobility Data Analytics (BMDA 2020), CEUR, vol 2578, 2020.</div>](http://ceur-ws.org/Vol-2578/BMDA3.pdf)
 
 * <div id="2">[2] Geolife Trajectory Dataset (https://www.microsoft.com/en-us/download/details.aspx?id=52367)
-
