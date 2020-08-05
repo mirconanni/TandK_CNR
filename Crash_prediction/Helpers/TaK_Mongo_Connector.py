@@ -1,8 +1,8 @@
 from pymongo import MongoClient, ASCENDING, DESCENDING
 import json
-import IMN_extraction.Helpers.trajectory_segmenter as trajectory_segmenter
-from IMN_extraction.Helpers.trajectory import Trajectory
-from IMN_extraction.Helpers.mobility_distance_functions import spherical_distance
+import Crash_prediction.Helpers.trajectory_segmenter as trajectory_segmenter
+from Crash_prediction.Helpers.trajectory import Trajectory
+from Crash_prediction.Helpers.mobility_distance_functions import spherical_distance
 from datetime import datetime
 from collections import defaultdict
 
@@ -14,7 +14,8 @@ class TaK_Mongo_Connector:
     This class provides methods to communicate with the MongoDB database of WP3.
 
     """
-    def __init__(self, host='localhost', port='27017', db='trackAndKnow'):
+
+    def __init__(self, host='localhost', port='27017', db='trackAndKnow', user= "", passwd= ""):
         """
         The constructor for TaK_Mongo_Connector class.
 
@@ -24,8 +25,10 @@ class TaK_Mongo_Connector:
         """
 
         #uri = "mongodb://%s:%s@%s" % (config.get('MONGO_HOST'), config.get('MONGO_PORT'))
-        uri = "mongodb://%s:%s" % (host, port)
-        print(uri)
+        if (user=="" or passwd == ""):
+            uri = "mongodb://%s:%s" % (host, port)
+        else:
+            uri = "mongodb://%s:%s@%s:%s" % (user, passwd, host, port)
         #uri = "mongodb://%s:%s@%s:%s" % ("user_name", "password", host, port)
 
         self._conn = MongoClient(uri)

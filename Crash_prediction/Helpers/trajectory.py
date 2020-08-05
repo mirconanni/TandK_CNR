@@ -1,6 +1,6 @@
 import json
 
-from IMN_extraction.Helpers.mobility_distance_functions import spherical_distance, closest_point_on_segment, trajectory_distance
+from Crash_prediction.Helpers.mobility_distance_functions import spherical_distance, closest_point_on_segment, trajectory_distance
 
 
 __author__ = 'Riccardo Guidotti'

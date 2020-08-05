@@ -8,8 +8,8 @@ from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import linkage, fcluster
 import warnings
 
-from IMN_extraction.Helpers.xmeans import *
-from IMN_extraction.Helpers.loc_dist_fun import *
+from Crash_prediction.Helpers.xmeans import *
+from Crash_prediction.Helpers.loc_dist_fun import *
 
 __author__ = 'Riccardo Guidotti'
 

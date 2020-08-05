@@ -1,9 +1,8 @@
 import math
 import numpy as np
 from scipy import stats
-#from CNR.kddlab.Helpers.trajectory import Trajectory
-from IMN_extraction.Helpers.mobility_distance_functions import spherical_distance
-from IMN_extraction.Helpers.trajectory import Trajectory
+from Crash_prediction.Helpers.mobility_distance_functions import spherical_distance
+from Crash_prediction.Helpers.trajectory import Trajectory
 
 def thompson_test(data, point, alpha=0.05):
     sd = np.std(data)

@@ -1,8 +1,8 @@
-from IMN_extraction.Helpers.mobility_distance_functions import trajectory_distance
-from IMN_extraction.Helpers.tosca import *
-from IMN_extraction.Helpers.bisecting_kmeans import *
-from IMN_extraction.Helpers.util import *
-from IMN_extraction.Helpers.mobility_distance_functions import spherical_distance
+from Crash_prediction.Helpers.mobility_distance_functions import trajectory_distance
+from Crash_prediction.Helpers.tosca import *
+from Crash_prediction.Helpers.bisecting_kmeans import *
+from Crash_prediction.Helpers.util import *
+from Crash_prediction.Helpers.mobility_distance_functions import spherical_distance
 
 import networkx as nx
 import pandas as pd

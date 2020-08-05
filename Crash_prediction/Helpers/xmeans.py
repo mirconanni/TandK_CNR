@@ -1,5 +1,5 @@
-from IMN_extraction.Helpers.kmeans import *
-from IMN_extraction.Helpers.loc_dist_fun import *
+from Crash_prediction.Helpers.kmeans import *
+from Crash_prediction.Helpers.loc_dist_fun import *
 
 __author__ = 'Riccardo Guidotti'
 

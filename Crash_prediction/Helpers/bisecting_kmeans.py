@@ -2,7 +2,7 @@ import math
 
 from collections import defaultdict
 
-from IMN_extraction.Helpers.kmeans import *
+from Crash_prediction.Helpers.kmeans import *
 
 __author__ = 'Riccardo Guidotti'
 
