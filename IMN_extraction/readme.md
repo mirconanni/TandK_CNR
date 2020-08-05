@@ -42,7 +42,7 @@ python3 imn_extractor.py localhost 27017 testdb dataset4 user_imns users.txt Fal
 ```
 
 ## Example on Geolife Dataset
-In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[3]](#3) is inserted into a collection "geolife_data" on MongoDB and then the IMN is created for that user. Please notice that, the id of the user is inserted into a file geolife_users.txt. Based on the above descriptions, this file contains the id of the users for which the IMNs will be generated. The result is stored in a collection "geolife_imns".
+In this example, the data of one user (user id 064) in the Geolife trajectory dataset [[3]](#3) is inserted into a collection "geolife_data" on MongoDB and then the IMN is created for that user. Creating an index for large volumes of data is highly recommended.
 
 ```python
 import glob
@@ -50,6 +50,7 @@ import pandas as pd
 
 from IMN_extraction.Helpers.TaK_Mongo_Connector import TaK_Mongo_Connector
 from IMN_extraction.imn_extractor import imn_extract
+from IMN_extraction.individual_mobility_network import build_imn
 
 mypath = "Geolife Trajectories 1.3/Data/064/Trajectory/"
 uid = 64
@@ -66,8 +67,24 @@ for f in sorted(glob.glob(mypath + "*.plt")):
 mongo_connector = TaK_Mongo_Connector('localhost', '27017', 'test')
 mongo_connector.insert_many('geolife_data', all_points)
 mongo_connector.create_index('geolife_data', 'TIMESTAMP', True)
+```
 
-imn_extract('localhost', '27017', 'test', 'geolife_data', 'geolife_imns', 'geolife_users.txt', True, 0.07, 0.05, 1200, '2008-08-15T00:00:00.000', '2008-08-31T00:00:00.000', 5, 1.0, 60)
+Please notice that, the id of the user is inserted into a file geolife_users.txt. Based on the above descriptions for Input Parameters, this file contains the id of the users for which the IMNs will be generated. The result is stored in a collection "geolife_imns".
+
+```python
+imn_extract('localhost', '27017', 'test', 'geolife_data', 'geolife_imns', 'geolife_users.txt', True, 0.07, 0.05, 1200, 
+            '2008-08-15T00:00:00.000', '2008-08-31T00:00:00.000', 5, 1.0, 60)
+```
+
+or the whole mobility history of a user can be retrieved from the database, and the IMN can be built for the whole period:
+
+```python
+input_query = {"user_id": 64,"adaptive": True, "temporal_thr": 1200, "spatial_thr": 0.05,
+                   "max_speed": 0.07, "min_length": 1.0, "min_duration": 60, "events_crashes": True,
+                   "from_date": '2008-08-15T00:00:00.000', "to_date": '2008-08-31T00:00:00.000'}
+
+imh, events, crashes = mongo_connector.load_imh('geolife_data', **input_query)
+build_imn(imh, events = events)
 ```
 
 ## Acknowledgement
