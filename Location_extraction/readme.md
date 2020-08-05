@@ -2,7 +2,7 @@
 H2020 - Grant Agreement n. 780754
 
 # Location Extractor
-An open-source implementation of the algorithm for adaptive trajectory segmentation and extracting the locations based on the mobility history of a user. The mobility history includes poisition information of the user during a specific period of time.
+An open-source implementation of the algorithm for adaptive trajectory segmentation introduced in [[1]](#1) and extracting the locations based on the mobility history of a user. The mobility history includes poisition information of the user during a specific period of time.
 
 ## Input Parameters
 Adaptive trajectory segmentation receives the following required parameters:
